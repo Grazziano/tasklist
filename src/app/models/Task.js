@@ -14,17 +14,18 @@ class Task extends Model {
           field: 'updated_at',
           type: Sequelize.DATE,
         },
-      }, {
-      sequelize,
-    }
+      },
+      {
+        sequelize,
+        modelName: 'tasks',
+      }
     );
     return this;
   }
 
   static associate(models) {
-    this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
+    this.belongsTo(models.users, { foreignKey: 'user_id', as: 'user' });
   }
-
 }
 
 export default Task
